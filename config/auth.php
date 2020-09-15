@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'user',  //webからuserに変更
         'passwords' => 'users',
     ],
 
@@ -36,11 +36,16 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'user' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
+        //ここから追記
+        'teacher' => [
+             'driver' => 'session',
+             'provider' => 'teachers',
+            ],
+        //ここまで追記
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -70,8 +75,12 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
-
-        // 'users' => [
+    //追加
+    'teachers' => [
+        'driver' => 'eloquent',
+        'model' => App\User::class,
+        ],
+    // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
@@ -98,6 +107,12 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
+        'teachers' => [
+            'provider' => 'teachers',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+
     ],
 
 ];
