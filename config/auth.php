@@ -44,7 +44,7 @@ return [
         'teacher' => [
              'driver' => 'session',
              'provider' => 'teachers',
-            ],
+        ],
         //ここまで追記
         'api' => [
             'driver' => 'token',
@@ -76,16 +76,16 @@ return [
             'model' => App\User::class,
         ],
     //追加
-    'teachers' => [
-        'driver' => 'eloquent',
-        'model' => App\User::class,
+        'teachers' => [
+            'driver' => 'eloquent',
+            'model' => App\Teacher::class,
         ],
     // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
     ],
-
+    
     /*
     |--------------------------------------------------------------------------
     | Resetting Passwords

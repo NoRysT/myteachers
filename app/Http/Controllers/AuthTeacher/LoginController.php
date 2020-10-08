@@ -1,13 +1,10 @@
 <?php
-
-namespace App\Http\Controllers\AuthAdmin;
-
+namespace App\Http\Controllers\AuthTeacher;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
-class LoginController extends Controller
+class LoginController extends Controller;
 {
     /*
     |--------------------------------------------------------------------------
@@ -36,7 +33,8 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:admin')->except('logout'); //ミドルウェア変更
+        $this->middleware('guest')->except('logout');
+        $this->middleware('guest:teacher')->except('logout'); //ミドルウェア変更
     }
 
     public function showLoginForm()

@@ -15,12 +15,14 @@ Route::group(['prefix' => 'teachers'], function () { //teachesディレクトリ
     Route::get('login', 'AuthTeacher\LoginController@showLoginForm')->name('teacher_auth.login');
     Route::post('login', 'AuthTeacher\LoginController@login')->name('teacher_auth.login');
     Route::post('logout', 'AuthTeacher\LoginController@logout')->name('teacher_auth.logout');
+    Route::get('register', 'AuthTeacher\RegisterController@showRegisterForm')->name('teacher_auth.register');
+    Route::post('register', 'AuthTeacher\RegisterController@register')->name('teacher_auth.register');
     Route::post('password/email', 'AuthTeacher\ForgotPasswordController@sendResetLinkEmail')->name('teacher_auth.password.email');
     Route::get('password/reset', 'AuthTeacher\ForgotPasswordController@showLinkRequestForm')->name('teacher_auth.password.request');
     Route::post('password/reset', 'AuthTeacher\ResetPasswordController@reset')->name('teacher_auth.password.update');
     Route::get('password/reset/{token}', 'AuthTeacher\ResetPasswordController@showResetForm')->name('teacher_auth.password.reset');
-    });
-    
+});
+
 //  Route::get('/', 'NewsController@index');
 
 //  Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
@@ -38,10 +40,6 @@ Route::group(['prefix' => 'teachers'], function () { //teachesディレクトリ
 //    Route::get('profile/delete', 'Admin\ProfileController@delete');
 
 //});
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 

@@ -1,14 +1,11 @@
 <?php
-
-namespace App\Http\Controllers\AuthTeachers; //namespace変更
-
-use App\Teachers; // 追加
+namespace App\Http\Controllers\AuthTeacher;
+use App\Teacher; // 追加
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
 class RegisterController extends Controller
 {
     /*
@@ -40,7 +37,10 @@ class RegisterController extends Controller
     {
         $this->middleware('guest:teacher'); //ミドルウェア変更
     }
-
+    public function showRegisterForm()
+    {
+        return view('teachers_auth.register');
+    }
     /**
      * Get a validator for an incoming registration request.
      *
@@ -64,7 +64,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return Teachers::create([
+        return Teacher::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
